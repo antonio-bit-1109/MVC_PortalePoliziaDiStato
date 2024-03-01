@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Mvc;
@@ -22,7 +23,58 @@ namespace MVC_PortalePoliziaDiStato.Controllers
         // GET: CompilazioneVerbale/Create
         public ActionResult Create()
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            List<int> ListaElencoViolazioni = new List<int>();
+            List<int> ListaIdAnagrafica = new List<int>();
+            string query;
+
+            try
+            {
+                conn.Open();
+                query = "SELECT IDViolazione FROM Violazione";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int idViolazione = Convert.ToInt32(reader["IDViolazione"]);
+                    ListaElencoViolazioni.Add(idViolazione);
+                    Session["ListaElencoViolazioni"] = ListaElencoViolazioni;
+                }
+
+                reader.Close();
+
+                query = "SELECT IDAnagrafica FROM Anagrafica";
+                cmd = new SqlCommand(query, conn); // Crea un nuovo comando SQL
+                reader = cmd.ExecuteReader(); // Esegui il nuovo comando SQL
+
+
+                while (reader.Read())
+                {
+                    int idanagrafica = Convert.ToInt32(reader["IDAnagrafica"]);
+                    ListaIdAnagrafica.Add(idanagrafica);
+                    Session["ListaIdAnagrafica"] = ListaIdAnagrafica;
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+                //TempData["Errore"] = ex.Message;
+                //return RedirectToAction("Index");
+                return new EmptyResult();
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return View();
+
         }
 
 

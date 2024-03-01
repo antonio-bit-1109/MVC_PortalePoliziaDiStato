@@ -79,18 +79,19 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IDViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IDViolazione, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IDViolazione, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.IDViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.IDViolazione, new SelectList(Session["ListaElencoViolazioni"] as List<int>) ,"seleziona un IDViolazione" , new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.IDViolazione, "", new { @class = "text-danger" })
+    </div>
+</div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.IDAnagrafica, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IDAnagrafica, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.IDViolazione, new SelectList(Session["ListaIdAnagrafica"] as List<int>), "seleziona un IDAnagrafica", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDAnagrafica, "", new { @class = "text-danger" })
             </div>
         </div>
