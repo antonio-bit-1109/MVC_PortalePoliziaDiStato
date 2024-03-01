@@ -10,11 +10,17 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-12">
             @if (TempData["Errore"] != null)
             {
                 <div class="alert alert-danger">
                     @TempData["Errore"]
+                </div>
+            }
+            @if (TempData["Messaggio"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Messaggio"]
                 </div>
             }
         </div>
@@ -120,3 +126,9 @@
 </div>
 
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+}

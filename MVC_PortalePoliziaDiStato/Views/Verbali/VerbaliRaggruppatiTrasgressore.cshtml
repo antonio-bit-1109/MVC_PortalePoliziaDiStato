@@ -4,43 +4,56 @@
     ViewBag.Title = "Verbali Raggruppati Per Trasgressore";
 }
 
-<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Indietro", "Index")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CognomeTrasgressore)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeTrasgressore)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumeroVerbali)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div>
+                <h2>@ViewBag.Title</h2>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CognomeTrasgressore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeTrasgressore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroVerbali)
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>*@
-        </tr>
-    }
+                <p>
+                    @Html.ActionLink("Indietro", "Index")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CognomeTrasgressore)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NomeTrasgressore)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NumeroVerbali)
+                        </th>
+                        <th></th>
+                    </tr>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CognomeTrasgressore)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NomeTrasgressore)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumeroVerbali)
+                            </td>
+                            @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

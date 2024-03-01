@@ -109,7 +109,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
                     cmd.ExecuteNonQuery();
 
                     TempData["Messaggio"] = "Verbale Inserito Correttamente";
-                    return RedirectToAction("Index", "Verbali");
+                    return RedirectToAction("Create");
                 }
                 catch (Exception ex)
                 {

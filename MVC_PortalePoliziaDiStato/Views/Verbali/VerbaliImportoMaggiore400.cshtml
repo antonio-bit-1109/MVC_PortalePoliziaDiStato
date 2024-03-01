@@ -4,49 +4,61 @@
     ViewBag.Title = "Verbali Importo Maggiore 400 Euro";
 }
 
-<h2>@ViewBag.title</h2>
 
-<p>
-    @Html.ActionLink("Indietro", "Index")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cognome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Importo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descrizione)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div>
+                <h2>@ViewBag.title</h2>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cognome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Importo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descrizione)
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>*@
-        </tr>
-    }
+                <p>
+                    @Html.ActionLink("Indietro", "Index")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cognome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Importo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descrizione)
+                        </th>
+                        <th></th>
+                    </tr>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cognome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Importo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descrizione)
+                            </td>
+                            @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
