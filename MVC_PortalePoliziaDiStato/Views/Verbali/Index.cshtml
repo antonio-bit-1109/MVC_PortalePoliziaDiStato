@@ -62,14 +62,15 @@
     @Scripts.Render("~/bundles/jqueryval")
 
 
-    <script>
-        
-            $(document).ready(function () {
-                setTimeout(function () {
-                    $('.alert').fadeOut('slow');
-                }, 3000);
-            });
-       
-    </script>
+<script>
+    function hideAlertAfterThreeSeconds() {
+        setTimeout(function () {
+            $('.alert').fadeOut('slow');
+        }, 3000);
+    }
+    $(document).ready(function () {
+        hideAlertAfterThreeSeconds();
+    });
+</script>
 
 }

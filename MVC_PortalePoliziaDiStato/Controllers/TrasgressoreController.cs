@@ -55,13 +55,13 @@ namespace MVC_PortalePoliziaDiStato.Controllers
                     cmd.ExecuteNonQuery();
 
                     TempData["Messaggio"] = "Trasgressore inserito correttamente";
-                    return RedirectToAction("Index", "Verbali");
+                    return RedirectToAction("Create");
                 }
                 catch (Exception ex)
                 {
                     Response.Write(ex.Message);
                     TempData["Errore"] = ex.Message;
-                    return RedirectToAction("Index", "Verbali");
+                    return RedirectToAction("Create");
                 }
                 finally
                 {
@@ -71,7 +71,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
             else
             {
                 TempData["Errore"] = "Errore durante la compilazione. Riprova";
-                return RedirectToAction("Index", "Verbali");
+                return RedirectToAction("Create");
             }
 
 
