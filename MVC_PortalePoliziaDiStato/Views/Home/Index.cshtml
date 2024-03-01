@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (TempData["Errore"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["Errore"]
+    </div>
+}
+
+<main>
+    <div class="p-4">
+
+        <div class="container">
+            <div class="m-4">
+                <div class="row">
+                    <div class="col-6">
+                        <div> @Html.ActionLink("Totale verbali raggruppati per trasgressore", "VerbaliRaggruppatiTrasgressore", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                    </div>
+                    <div class="col-6">
+                        <div> @Html.ActionLink("Totale dei punti decurtati raggruppati per trasgressore ", "TotalePuntiDecurtati_PerTrasgressore", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-4">
+                <div class="row">
+                    <div class="col-6">
+                        <div> @Html.ActionLink("Violazioni con importo maggiore di 400 euro ", "VerbaliImportoMaggiore400", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                    </div>
+
+                    <div class="col-6">
+                        <div> @Html.ActionLink("Nome, importo, cognome , data violazione , decurtamento punti delle violazioni che superano 10pt  ", "Contact", "Home", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+</main>
