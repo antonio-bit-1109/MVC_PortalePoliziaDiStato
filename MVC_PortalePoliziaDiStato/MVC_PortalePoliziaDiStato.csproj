@@ -122,11 +122,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CompilazioneVerbaleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TrasgressoreController.cs" />
     <Compile Include="Controllers\VerbaliController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Anagrafica.cs" />
+    <Compile Include="Models\ListaViolazioni.cs" />
     <Compile Include="Models\TotalePuntiDecurtati_PerTrasgressore.cs" />
     <Compile Include="Models\Verbale.cs" />
     <Compile Include="Models\verbaliImportoMagg400.cs" />
@@ -191,6 +193,8 @@
     <Content Include="Views\Verbali\VerbaliImportoMaggiore400.cshtml" />
     <Content Include="Views\Verbali\verbaliViolazioni10Pt.cshtml" />
     <Content Include="Views\CompilazioneVerbale\Create.cshtml" />
+    <Content Include="Views\Trasgressore\Create.cshtml" />
+    <Content Include="Views\Trasgressore\ElencoTrasgressioni.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
