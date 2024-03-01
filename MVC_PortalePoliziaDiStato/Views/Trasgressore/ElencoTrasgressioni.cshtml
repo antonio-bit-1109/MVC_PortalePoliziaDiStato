@@ -4,36 +4,50 @@
     ViewBag.Title = "ElencoTrasgressioni";
 }
 
-<h2>ElencoTrasgressioni</h2>
 
-<p>
-    @Html.ActionLink("Indietro", "Index" , "Home")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDViolazione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descrizione)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div>
+                <h2>ElencoTrasgressioni</h2>
+                <p>
+                    @Html.ActionLink("Indietro", "Index", "Home")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IDViolazione)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.descrizione)
+                        </th>
+                        <th></th>
+                    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDViolazione)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descrizione)
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>*@
-    </tr>
-}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IDViolazione)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.descrizione)
+                            </td>
+                            @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+                        </tr>
+                    }
 
-</table>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

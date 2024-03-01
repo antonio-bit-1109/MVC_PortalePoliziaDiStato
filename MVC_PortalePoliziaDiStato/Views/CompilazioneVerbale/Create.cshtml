@@ -4,106 +4,119 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Nuovo Verbale</h2>
-
-@if (TempData["Errore"] != null)
-{
-    <div class="alert alert-danger">
-        @TempData["Errore"]
-    </div>
-}
 
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @if (TempData["Errore"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["Errore"]
+                </div>
+            }
+        </div>
+        <div class="col-10">
+            <h2>Nuovo Verbale</h2>
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.IdVerbale, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IdVerbale, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IdVerbale, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataViolazione, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataViolazione, "", new { @class = "text-danger" })
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @*<div class="form-group">
+                    @Html.LabelFor(model => model.IdVerbale, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IdVerbale, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IdVerbale, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DataViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DataViolazione, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DataViolazione, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IndirizzoViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.IndirizzoViolazione, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.IndirizzoViolazione, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NominativoAgente, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NominativoAgente, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NominativoAgente, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DataTrascrizione_verbale, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DataTrascrizione_verbale, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DataTrascrizione_verbale, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Importo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Importo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Importo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DecurtamentoPunti, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DecurtamentoPunti, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DecurtamentoPunti, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IDViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.IDViolazione, new SelectList(Session["ListaElencoViolazioni"] as List<int>), "seleziona un IDViolazione", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IDViolazione, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IDAnagrafica, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.IDAnagrafica, new SelectList(Session["ListaIdAnagrafica"] as List<int>), "seleziona un IDAnagrafica", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IDAnagrafica, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group my-3">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Crea Nuovo verbale" class="btn btn-outline-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index", "Home")
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IndirizzoViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IndirizzoViolazione, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IndirizzoViolazione, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NominativoAgente, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NominativoAgente, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NominativoAgente, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataTrascrizione_verbale, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataTrascrizione_verbale, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataTrascrizione_verbale, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Importo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Importo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Importo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DecurtamentoPunti, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DecurtamentoPunti, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DecurtamentoPunti, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-<div class="form-group">
-    @Html.LabelFor(model => model.IDViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.DropDownListFor(model => model.IDViolazione, new SelectList(Session["ListaElencoViolazioni"] as List<int>) ,"seleziona un IDViolazione" , new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.IDViolazione, "", new { @class = "text-danger" })
     </div>
 </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IDAnagrafica, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.IDViolazione, new SelectList(Session["ListaIdAnagrafica"] as List<int>), "seleziona un IDAnagrafica", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IDAnagrafica, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group my-3">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crea Nuovo verbale" class="btn btn-outline-primary" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index", "Home")
-</div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_PortalePoliziaDiStato.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -47,7 +48,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 
                 reader.Close();
 
-                query = "SELECT IDAnagrafica FROM Anagrafica";
+                query = "SELECT IDAnagrafica FROM Anagrafica order by IdAnagrafica ASC";
                 cmd = new SqlCommand(query, conn); // Crea un nuovo comando SQL
                 reader = cmd.ExecuteReader(); // Esegui il nuovo comando SQL
 
@@ -80,7 +81,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 
         // POST: CompilazioneVerbale/Create
         [HttpPost]
-        public ActionResult Create(FormCollection DatiForm)
+        public ActionResult Create(Verbale verbale)
         {
 
             if (ModelState.IsValid)
@@ -96,14 +97,14 @@ namespace MVC_PortalePoliziaDiStato.Controllers
                     query = "INSERT INTO Verbale (DataViolazione, IndirizzoViolazione, NominativoAgente, DataTrascrizione_verbale, Importo, DecurtamentoPunti, IDViolazione, IDAnagrafica) " +
                         "VALUES (@DataViolazione, @IndirizzoViolazione, @NominativoAgente, @DataTrascrizione_verbale, @Importo, @DecurtamentoPunti, @IDViolazione, @IDAnagrafica)";
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@DataViolazione", Convert.ToDateTime(DatiForm["DataViolazione"]));
-                    cmd.Parameters.AddWithValue("@IndirizzoViolazione", DatiForm["IndirizzoViolazione"]);
-                    cmd.Parameters.AddWithValue("@NominativoAgente", DatiForm["NominativoAgente"]);
-                    cmd.Parameters.AddWithValue("@DataTrascrizione_verbale", Convert.ToDateTime(DatiForm["DataTrascrizione_verbale"]));
-                    cmd.Parameters.AddWithValue("@Importo", Convert.ToDecimal(DatiForm["Importo"]));
-                    cmd.Parameters.AddWithValue("@DecurtamentoPunti", Convert.ToInt32(DatiForm["DecurtamentoPunti"]));
-                    cmd.Parameters.AddWithValue("@IDViolazione", Convert.ToInt32(DatiForm["IDViolazione"]));
-                    cmd.Parameters.AddWithValue("@IDAnagrafica", Convert.ToInt32(DatiForm["IDAnagrafica"]));
+                    cmd.Parameters.AddWithValue("@DataViolazione", Convert.ToDateTime(verbale.DataViolazione));
+                    cmd.Parameters.AddWithValue("@IndirizzoViolazione", verbale.IndirizzoViolazione);
+                    cmd.Parameters.AddWithValue("@NominativoAgente", verbale.NominativoAgente);
+                    cmd.Parameters.AddWithValue("@DataTrascrizione_verbale", Convert.ToDateTime(verbale.DataTrascrizione_verbale));
+                    cmd.Parameters.AddWithValue("@Importo", Convert.ToDecimal(verbale.Importo));
+                    cmd.Parameters.AddWithValue("@DecurtamentoPunti", Convert.ToInt32(verbale.DecurtamentoPunti));
+                    cmd.Parameters.AddWithValue("@IDViolazione", Convert.ToInt32(verbale.IDViolazione));
+                    cmd.Parameters.AddWithValue("@IDAnagrafica", Convert.ToInt32(verbale.IDAnagrafica));
 
                     cmd.ExecuteNonQuery();
 
