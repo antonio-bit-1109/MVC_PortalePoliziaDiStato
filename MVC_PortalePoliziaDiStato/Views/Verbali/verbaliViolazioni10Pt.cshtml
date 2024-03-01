@@ -1,7 +1,7 @@
-﻿@model IEnumerable<MVC_PortalePoliziaDiStato.Models.TotalePuntiDecurtati_PerTrasgressore>
+﻿@model IEnumerable<MVC_PortalePoliziaDiStato.Models.ViolazioniMagg10Pt>
 
 @{
-    ViewBag.Title = "Totale Punti Decurtati per trasgressore";
+    ViewBag.Title = "Verbali Violazioni che superano 10 punti.";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -12,13 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cognome)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TotalePuntiDecurtati)
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Importo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataViolazione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DecurtamentoPunti)
         </th>
         <th></th>
     </tr>
@@ -26,13 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Cognome)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TotalePuntiDecurtati)
+            @Html.DisplayFor(modelItem => item.Cognome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Importo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataViolazione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DecurtamentoPunti)
         </td>
         @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

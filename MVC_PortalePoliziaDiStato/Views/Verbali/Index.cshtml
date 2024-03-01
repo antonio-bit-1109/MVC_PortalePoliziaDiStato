@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Tipologie di verbali";
+}
+
+
+
+@if (TempData["Errore"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["Errore"]
+    </div>
+}
+
+@if (TempData["Messaggio"] != null)
+{
+    <div class="alert alert-success my-3 d-flex justify-content-center" role="alert">
+       @TempData["Messaggio"] 
+    </div>
+}
+
+
+
+<div class="p-4 d-flex flex-column">
+
+    <h2 class="m-auto">@ViewBag.Title</h2>
+
+    <div class="container">
+        <div class="m-4">
+            <div class="row">
+                <div class="col-6">
+                    <div> @Html.ActionLink("Totale verbali raggruppati per trasgressore", "VerbaliRaggruppatiTrasgressore", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                </div>
+                <div class="col-6">
+                    <div> @Html.ActionLink("Totale dei punti decurtati raggruppati per trasgressore ", "TotalePuntiDecurtati_PerTrasgressore", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-4">
+            <div class="row">
+                <div class="col-6">
+                    <div> @Html.ActionLink("Violazioni con importo maggiore di 400 euro ", "VerbaliImportoMaggiore400", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                </div>
+
+                <div class="col-6">
+                    <div> @Html.ActionLink("Nome, importo, cognome , data violazione , decurtamento punti delle violazioni che superano 10pt  ", "verbaliViolazioni10Pt", new { area = "" }, new { @class = "btn btn-primary text-light" })</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

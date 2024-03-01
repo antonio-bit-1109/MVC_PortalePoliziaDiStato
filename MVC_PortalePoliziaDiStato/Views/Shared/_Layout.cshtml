@@ -17,9 +17,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 @Html.ActionLink("POLIZIA DI STATO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-light fs-1" })
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    @Html.ActionLink("Verbali", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-light" })
-                </div>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                @Html.ActionLink("Verbali", "Index", "Verbali", new { area = "" }, new { @class = "navbar-brand text-light" })
+                @Html.ActionLink("Compila Nuovo Verbale", "Create", "CompilazioneVerbale", new { area = "" }, new { @class = "navbar-brand text-light" })
+            </div>
             </div>
         </div>
     </nav>
