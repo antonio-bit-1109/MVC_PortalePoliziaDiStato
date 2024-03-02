@@ -28,19 +28,40 @@
                         </div>
                     }
                 </div>
-                
+
             </div>
 
             <div class="col-12">
                 <p class="display-3">Benvenuto nel Portale della Polizia di Stato</p>
             </div>
+            @if (Session["DatiAgenteLoggato"] != null)
+            {
+
+            }
+            else
+            {
+                <div class="text-center">
+                    <h5 class="text-danger"> Devi effettuare il login per visualizzare le categorie disponibili </h5>
+                </div>
+
+            }
+
         </div>
     </div>
+
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
-                @Html.Partial("_LoginPartial")
+
+                @if (Session["DatiAgenteLoggato"] != null)
+                {
+
+                }
+                else
+                {
+                    @Html.Partial("_LoginPartial")
+                }
             </div>
         </div>
     </div>
