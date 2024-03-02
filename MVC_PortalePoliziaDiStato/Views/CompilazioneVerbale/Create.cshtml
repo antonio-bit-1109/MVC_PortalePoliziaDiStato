@@ -10,20 +10,9 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            @if (TempData["Errore"] != null)
-            {
-                <div class="alert alert-danger">
-                    @TempData["Errore"]
-                </div>
-            }
-            @if (TempData["Messaggio"] != null)
-            {
-                <div class="alert alert-success">
-                    @TempData["Messaggio"]
-                </div>
-            }
-        </div>
+        
+        @Html.Partial("_AlertPartial")
+
         <div class="col-10">
             <h2>Nuovo Verbale</h2>
 
@@ -35,6 +24,7 @@
 
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                     @*<div class="form-group">
                             @Html.LabelFor(model => model.IdVerbale, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
@@ -97,15 +87,17 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.IDViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.IDViolazione, new SelectList(Session["ListaElencoViolazioni"] as List<int>), "seleziona un IDViolazione", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.IDViolazione, new SelectList((Dictionary<int, string>)ViewBag.dizionarioViolazioni, "Key", "Value"), "Seleziona una Violazione", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.IDViolazione, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
+
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.IDAnagrafica, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.IDAnagrafica, new SelectList(Session["ListaIdAnagrafica"] as List<int>), "seleziona un IDAnagrafica", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.IDAnagrafica, new SelectList((Dictionary<int, MVC_PortalePoliziaDiStato.Models.ModelloNomeCompleto>)ViewBag.dizionarioAnagrafiche, "Key", "Value.NomeCompleto"), "Seleziona un Utente", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.IDAnagrafica, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -119,7 +111,7 @@
             }
 
             <div>
-                @Html.ActionLink("Back to List", "Index", "Home")
+                @Html.ActionLink("Back to List", "Index", "Verbali")
             </div>
         </div>
     </div>
