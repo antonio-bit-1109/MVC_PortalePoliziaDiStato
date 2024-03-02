@@ -24,67 +24,78 @@ namespace MVC_PortalePoliziaDiStato.Controllers
         // GET: CompilazioneVerbale/Create
         public ActionResult Create()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
-            SqlConnection conn = new SqlConnection(connectionString);
 
-            //List<int> ListaElencoViolazioni = new List<int>();
-            Dictionary<int, string> DizionarioElencoViolazioni = new Dictionary<int, string>();
-            Dictionary<int, ModelloNomeCompleto> DizionarioElencoAnagrafiche = new Dictionary<int, ModelloNomeCompleto>();
-            //List<int> ListaIdAnagrafica = new List<int>();
-            string query;
-
-            try
+            if (Session["DatiAgenteLoggato"] != null)
             {
-                conn.Open();
-                //query = "SELECT IDViolazione FROM Violazione";
-                query = "SELECT * FROM Violazione";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
+                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                SqlConnection conn = new SqlConnection(connectionString);
 
-                while (reader.Read())
+                //List<int> ListaElencoViolazioni = new List<int>();
+                Dictionary<int, string> DizionarioElencoViolazioni = new Dictionary<int, string>();
+                Dictionary<int, ModelloNomeCompleto> DizionarioElencoAnagrafiche = new Dictionary<int, ModelloNomeCompleto>();
+                //List<int> ListaIdAnagrafica = new List<int>();
+                string query;
+
+                try
                 {
-                    int idViolazione = Convert.ToInt32(reader["IDViolazione"]);
-                    string descrizione = reader["descrizione"].ToString();
-                    //ListaElencoViolazioni.Add(idViolazione);
-                    //Session["ListaElencoViolazioni"] = ListaElencoViolazioni;
-                    DizionarioElencoViolazioni.Add(idViolazione, descrizione);
+                    conn.Open();
+                    //query = "SELECT IDViolazione FROM Violazione";
+                    query = "SELECT * FROM Violazione";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int idViolazione = Convert.ToInt32(reader["IDViolazione"]);
+                        string descrizione = reader["descrizione"].ToString();
+                        //ListaElencoViolazioni.Add(idViolazione);
+                        //Session["ListaElencoViolazioni"] = ListaElencoViolazioni;
+                        DizionarioElencoViolazioni.Add(idViolazione, descrizione);
+                    }
+
+                    reader.Close();
+
+                    query = "SELECT idanagrafica , nome , cognome FROM anagrafica order by idanagrafica ASC ";
+                    cmd = new SqlCommand(query, conn); // Crea un nuovo comando SQL
+                    reader = cmd.ExecuteReader(); // Esegui il nuovo comando SQL
+
+
+                    while (reader.Read())
+                    {
+                        int idanagrafica = Convert.ToInt32(reader["IDAnagrafica"]);
+                        string nome = reader["Nome"].ToString();
+                        string cognome = reader["Cognome"].ToString();
+                        //ListaIdAnagrafica.Add(idanagrafica);
+                        //Session["ListaIdAnagrafica"] = ListaIdAnagrafica;
+                        ModelloNomeCompleto Nome_CognomeCompleto = new ModelloNomeCompleto { Nome = nome, Cognome = cognome };
+                        DizionarioElencoAnagrafiche.Add(idanagrafica, Nome_CognomeCompleto);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex.Message);
+                    //TempData["Errore"] = ex.Message;
+                    //return RedirectToAction("Index");
+                    return new EmptyResult();
+                }
+                finally
+                {
+                    conn.Close();
                 }
 
-                reader.Close();
-
-                query = "SELECT idanagrafica , nome , cognome FROM anagrafica order by idanagrafica ASC ";
-                cmd = new SqlCommand(query, conn); // Crea un nuovo comando SQL
-                reader = cmd.ExecuteReader(); // Esegui il nuovo comando SQL
-
-
-                while (reader.Read())
-                {
-                    int idanagrafica = Convert.ToInt32(reader["IDAnagrafica"]);
-                    string nome = reader["Nome"].ToString();
-                    string cognome = reader["Cognome"].ToString();
-                    //ListaIdAnagrafica.Add(idanagrafica);
-                    //Session["ListaIdAnagrafica"] = ListaIdAnagrafica;
-                    ModelloNomeCompleto Nome_CognomeCompleto = new ModelloNomeCompleto { Nome = nome, Cognome = cognome };
-                    DizionarioElencoAnagrafiche.Add(idanagrafica, Nome_CognomeCompleto);
-                }
-
-                reader.Close();
+                ViewBag.dizionarioViolazioni = DizionarioElencoViolazioni;
+                ViewBag.dizionarioAnagrafiche = DizionarioElencoAnagrafiche;
+                return View();
             }
-            catch (Exception ex)
+            else
             {
-                Response.Write(ex.Message);
-                //TempData["Errore"] = ex.Message;
-                //return RedirectToAction("Index");
-                return new EmptyResult();
-            }
-            finally
-            {
-                conn.Close();
+                return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.dizionarioViolazioni = DizionarioElencoViolazioni;
-            ViewBag.dizionarioAnagrafiche = DizionarioElencoAnagrafiche;
-            return View();
+
+
 
         }
 

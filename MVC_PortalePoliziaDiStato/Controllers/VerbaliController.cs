@@ -12,7 +12,16 @@ namespace MVC_PortalePoliziaDiStato.Controllers
         // GET: Verbali
         public ActionResult Index()
         {
-            return View();
+            if (Session["DatiAgenteLoggato"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
         }
 
         public ActionResult VerbaliRaggruppatiTrasgressore()
