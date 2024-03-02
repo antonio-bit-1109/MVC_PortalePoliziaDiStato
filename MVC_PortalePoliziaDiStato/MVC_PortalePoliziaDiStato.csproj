@@ -203,6 +203,7 @@
     <Content Include="Views\Trasgressore\ElencoTrasgressioni.cshtml" />
     <Content Include="Views\CompilazioneVerbale\_AlertPartial.cshtml" />
     <Content Include="Views\Home\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\_noiaFight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

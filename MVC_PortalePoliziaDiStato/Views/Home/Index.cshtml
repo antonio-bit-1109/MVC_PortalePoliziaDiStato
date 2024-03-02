@@ -36,7 +36,10 @@
             </div>
             @if (Session["DatiAgenteLoggato"] != null)
             {
-
+                <div class="text-center">
+                    <h5 class="text-info"> fai il logout per visualizzare di nuovo la pagina di Login.</h5>
+                </div>
+               
             }
             else
             {
@@ -62,6 +65,17 @@
                 {
                     @Html.Partial("_LoginPartial")
                 }
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                @* MINIGIOCO QUI *@
+                <div class="mt-5">
+                    @Html.Partial("_noiaFight")
+                </div>
             </div>
         </div>
     </div>

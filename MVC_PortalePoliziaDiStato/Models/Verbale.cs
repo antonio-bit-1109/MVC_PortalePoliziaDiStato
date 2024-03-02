@@ -21,9 +21,11 @@ namespace MVC_PortalePoliziaDiStato.Models
         public DateTime DataTrascrizione_verbale { get; set; }
 
         [Required(ErrorMessage = "Inserire Importo")]
+        [Range(0, 800000, ErrorMessage = "Importo deve essere compreso tra 0 e 800.000")]
         public decimal Importo { get; set; }
 
         [Required(ErrorMessage = "Inserire Decurtamento Punti")]
+        [Range(0, 30, ErrorMessage = "Decurtamento punti deve essere compreso tra 0 e 30")]
         public int DecurtamentoPunti { get; set; }
 
         [Required(ErrorMessage = "Inserire ID Violazione")]

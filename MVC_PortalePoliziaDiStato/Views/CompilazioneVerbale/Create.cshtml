@@ -97,7 +97,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.IDAnagrafica, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.IDAnagrafica, new SelectList((Dictionary<int, MVC_PortalePoliziaDiStato.Models.ModelloNomeCompleto>)ViewBag.dizionarioAnagrafiche, "Key", "Value.NomeCompleto"), "Seleziona un Utente", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.IDAnagrafica, new SelectList((Dictionary<int, MVC_PortalePoliziaDiStato.Models.ModelloNomeCompleto>)ViewBag.dizionarioAnagrafiche, "Key", "Value.NomeCompleto"), "Seleziona un Cattivone", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.IDAnagrafica, "", new { @class = "text-danger" })
                         </div>
                     </div>
