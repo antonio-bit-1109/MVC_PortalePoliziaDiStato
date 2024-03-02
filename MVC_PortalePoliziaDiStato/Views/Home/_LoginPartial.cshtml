@@ -21,14 +21,63 @@
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", id = "exampleInputPassword1" } })
                     </div>
-                    <button type="submit" class="btn btn-primary">Entra Nel Portale</button>
+                    <div class="d-flex gap-5">
+                        <button type="submit" class="btn btn-primary">Entra Nel Portale</button>
+                        <button id="winButton" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" class="btn btn-outline-dark"> Clicca per Vincere </button>
+                    </div>
                 </form>
             </div>
         </div>
+
+        @* MODAL 1  *@
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel"> Ciao Luca :)</h1>
+                        @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+                    </div>
+                    <div class="modal-body">
+                        @* INSERIRE UNA GIF  *@
+                        <img  src="~/Content/imgs/gif.gif"/>
+                    </div>
+                    <div class="modal-footer">
+                        <p>chiudi --></p>
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Chiudi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* MODAL 2  *@
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2"> Scherzavo :D </h1>
+                        @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+                    </div>
+                    <div class="modal-body">
+                       <img class="w-100" src="~/Content/imgs/rick_roll.gif"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Chiudi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
 
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}
 
 
 

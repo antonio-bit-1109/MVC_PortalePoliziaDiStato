@@ -157,6 +157,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\imgs\gif.gif" />
+    <Content Include="Content\imgs\grinch_meme.gif" />
+    <Content Include="Content\imgs\rick_roll.gif" />
     <Content Include="Content\SuperHeroTheme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
