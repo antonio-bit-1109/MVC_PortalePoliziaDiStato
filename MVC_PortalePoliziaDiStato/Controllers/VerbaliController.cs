@@ -28,7 +28,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
             {
 
                 conn.Open();
-                query = "SELECT Cognome, Nome, COUNT(*) AS NumeroVerbali, SUM(Importo) AS TotaleImporti, SUM(DecurtamentoPunti) AS TotalePunti FROM Anagrafica INNER JOIN Verbale ON Anagrafica.IdAnagrafica = Verbale.IDAnagrafica GROUP BY Cognome, Nome";
+                query = "SELECT Cognome, Nome, COUNT(*) AS NumeroVerbali, SUM(Importo) AS TotaleImporti, SUM(DecurtamentoPunti) AS TotalePunti FROM Anagrafica INNER JOIN Verbale ON Anagrafica.IdAnagrafica = Verbale.IDAnagrafica GROUP BY Cognome, Nome ORDER BY cognome ASC";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
