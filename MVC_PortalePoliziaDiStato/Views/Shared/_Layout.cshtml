@@ -16,15 +16,25 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="text-center">
+                <div class="d-flex justify-content-center align-items-center">
                     @Html.ActionLink("POLIZIA DI STATO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-light fs-1" })
+
+                    @if (Session["DatiAgenteLoggato"] != null)
+                    {
+                    @Html.ActionLink("LogOut", "LogoutAction", "Home", new { area = "" }, new { @class = "btn btn-secondary" })                       
+                    }
+
                 </div>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between flex-column">
-                    @Html.ActionLink("Verbali", "Index", "Verbali", new { area = "" }, new { @class = "navbar-brand text-light" })
-                    @Html.ActionLink("Compila Nuovo Verbale", "Create", "CompilazioneVerbale", new { area = "" }, new { @class = "navbar-brand text-light" })
-                    @Html.ActionLink("Aggiungi Nuovo Trasgressore", "Create", "Trasgressore", new { area = "" }, new { @class = "navbar-brand text-light" })
-                    @Html.ActionLink("Elenco Trasgressioni", "ElencoTrasgressioni", "Trasgressore", new { area = "" }, new { @class = "navbar-brand text-light" })
-                </div>
+
+                @if (Session["DatiAgenteLoggato"] != null)
+                {
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between flex-column">
+                        @Html.ActionLink("Verbali", "Index", "Verbali", new { area = "" }, new { @class = "navbar-brand text-light" })
+                        @Html.ActionLink("Compila Nuovo Verbale", "Create", "CompilazioneVerbale", new { area = "" }, new { @class = "navbar-brand text-light" })
+                        @Html.ActionLink("Aggiungi Nuovo Trasgressore", "Create", "Trasgressore", new { area = "" }, new { @class = "navbar-brand text-light" })
+                        @Html.ActionLink("Elenco Trasgressioni", "ElencoTrasgressioni", "Trasgressore", new { area = "" }, new { @class = "navbar-brand text-light" })
+                    </div>
+                }
             </div>
         </div>
     </nav>

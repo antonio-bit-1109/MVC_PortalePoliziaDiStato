@@ -129,6 +129,8 @@
     </Compile>
     <Compile Include="Models\Anagrafica.cs" />
     <Compile Include="Models\ListaViolazioni.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ModelAgenteLoggato.cs" />
     <Compile Include="Models\TotalePuntiDecurtati_PerTrasgressore.cs" />
     <Compile Include="Models\Verbale.cs" />
     <Compile Include="Models\verbaliImportoMagg400.cs" />
@@ -195,6 +197,8 @@
     <Content Include="Views\CompilazioneVerbale\Create.cshtml" />
     <Content Include="Views\Trasgressore\Create.cshtml" />
     <Content Include="Views\Trasgressore\ElencoTrasgressioni.cshtml" />
+    <Content Include="Views\CompilazioneVerbale\_AlertPartial.cshtml" />
+    <Content Include="Views\Home\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,35 @@
+﻿
+@model MVC_PortalePoliziaDiStato.Models.LoginModel
+
+
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                Login Section
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                <form method="post" action="@Url.Action("CheckLogin", "Home")">
+                    <div class="mb-3">
+                        <label for="FormName" class="form-label">Nome Agente</label>
+                        @Html.EditorFor(model => model.NomeAgente, new { htmlAttributes = new { @class = "form-control", id = "FormName" } })
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", id = "exampleInputPassword1" } })
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entra Nel Portale</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

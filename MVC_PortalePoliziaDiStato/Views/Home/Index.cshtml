@@ -6,21 +6,61 @@
 
 <main>
 
+
+
     <div class="container-fluid">
         <div class="row">
             <img style="height:300px ; object-fit:cover;" class="w-100" src="https://c4.wallpaperflare.com/wallpaper/365/229/234/touring-xdrive-2017-530d-wallpaper-preview.jpg" />
         </div>
     </div>
-   
+
 
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
+            <div class="col-8">
+
+                <div class="my-3">
+                    @if (TempData["Errore"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["Errore"]
+                        </div>
+                    }
+                </div>
+                
+            </div>
+
             <div class="col-12">
                 <p class="display-3">Benvenuto nel Portale della Polizia di Stato</p>
             </div>
         </div>
     </div>
 
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
 </main>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+    function hideAlertAfterThreeSeconds() {
+        setTimeout(function () {
+            $('.alert').fadeOut('slow');
+        }, 3000);
+    }
+    $(document).ready(function () {
+        hideAlertAfterThreeSeconds();
+    });
+    </script>
+
+}
