@@ -27,28 +27,32 @@ namespace MVC_PortalePoliziaDiStato.Controllers
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
             SqlConnection conn = new SqlConnection(connectionString);
 
-            List<int> ListaElencoViolazioni = new List<int>();
-            List<int> ListaIdAnagrafica = new List<int>();
+            //List<int> ListaElencoViolazioni = new List<int>();
+            Dictionary<int, string> DizionarioElencoViolazioni = new Dictionary<int, string>();
+            Dictionary<int, ModelloNomeCompleto> DizionarioElencoAnagrafiche = new Dictionary<int, ModelloNomeCompleto>();
+            //List<int> ListaIdAnagrafica = new List<int>();
             string query;
 
             try
             {
                 conn.Open();
-                query = "SELECT IDViolazione FROM Violazione";
-
+                //query = "SELECT IDViolazione FROM Violazione";
+                query = "SELECT * FROM Violazione";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     int idViolazione = Convert.ToInt32(reader["IDViolazione"]);
-                    ListaElencoViolazioni.Add(idViolazione);
-                    Session["ListaElencoViolazioni"] = ListaElencoViolazioni;
+                    string descrizione = reader["descrizione"].ToString();
+                    //ListaElencoViolazioni.Add(idViolazione);
+                    //Session["ListaElencoViolazioni"] = ListaElencoViolazioni;
+                    DizionarioElencoViolazioni.Add(idViolazione, descrizione);
                 }
 
                 reader.Close();
 
-                query = "SELECT IDAnagrafica FROM Anagrafica order by IdAnagrafica ASC";
+                query = "SELECT idanagrafica , nome , cognome FROM anagrafica order by idanagrafica ASC ";
                 cmd = new SqlCommand(query, conn); // Crea un nuovo comando SQL
                 reader = cmd.ExecuteReader(); // Esegui il nuovo comando SQL
 
@@ -56,8 +60,12 @@ namespace MVC_PortalePoliziaDiStato.Controllers
                 while (reader.Read())
                 {
                     int idanagrafica = Convert.ToInt32(reader["IDAnagrafica"]);
-                    ListaIdAnagrafica.Add(idanagrafica);
-                    Session["ListaIdAnagrafica"] = ListaIdAnagrafica;
+                    string nome = reader["Nome"].ToString();
+                    string cognome = reader["Cognome"].ToString();
+                    //ListaIdAnagrafica.Add(idanagrafica);
+                    //Session["ListaIdAnagrafica"] = ListaIdAnagrafica;
+                    ModelloNomeCompleto Nome_CognomeCompleto = new ModelloNomeCompleto { Nome = nome, Cognome = cognome };
+                    DizionarioElencoAnagrafiche.Add(idanagrafica, Nome_CognomeCompleto);
                 }
 
                 reader.Close();
@@ -74,6 +82,8 @@ namespace MVC_PortalePoliziaDiStato.Controllers
                 conn.Close();
             }
 
+            ViewBag.dizionarioViolazioni = DizionarioElencoViolazioni;
+            ViewBag.dizionarioAnagrafiche = DizionarioElencoAnagrafiche;
             return View();
 
         }

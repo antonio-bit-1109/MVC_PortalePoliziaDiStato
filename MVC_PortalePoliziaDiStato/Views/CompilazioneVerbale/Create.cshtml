@@ -87,15 +87,17 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.IDViolazione, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.IDViolazione, new SelectList(Session["ListaElencoViolazioni"] as List<int>), "seleziona un IDViolazione", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.IDViolazione, new SelectList((Dictionary<int, string>)ViewBag.dizionarioViolazioni, "Key", "Value"), "Seleziona una Violazione", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.IDViolazione, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
+
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.IDAnagrafica, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.IDAnagrafica, new SelectList(Session["ListaIdAnagrafica"] as List<int>), "seleziona un IDAnagrafica", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.IDAnagrafica, new SelectList((Dictionary<int, MVC_PortalePoliziaDiStato.Models.ModelloNomeCompleto>)ViewBag.dizionarioAnagrafiche, "Key", "Value.NomeCompleto"), "Seleziona un Utente", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.IDAnagrafica, "", new { @class = "text-danger" })
                         </div>
                     </div>

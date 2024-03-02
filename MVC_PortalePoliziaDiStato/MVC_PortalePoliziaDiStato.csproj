@@ -131,6 +131,7 @@
     <Compile Include="Models\ListaViolazioni.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ModelAgenteLoggato.cs" />
+    <Compile Include="Models\ModelloNomeCompleto.cs" />
     <Compile Include="Models\TotalePuntiDecurtati_PerTrasgressore.cs" />
     <Compile Include="Models\Verbale.cs" />
     <Compile Include="Models\verbaliImportoMagg400.cs" />
