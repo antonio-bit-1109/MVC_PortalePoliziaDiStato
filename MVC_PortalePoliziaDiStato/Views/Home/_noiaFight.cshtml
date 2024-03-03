@@ -4,59 +4,22 @@
     <div class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button collapsed bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                TI STAI ANNOIANDO? GIOCA!
+                Non ricordi la password e non sai cosa fare? Clicca qui!
             </button>
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
                 @* --------- PAGINA DEL CONTENT ------- *@
-                <button onclick="mossaUtente('carta')" id="btn_carta">carta</button>
-                <button onclick="mossaUtente('forbici')" id="btn_forbici">forbici</button>
-                <button onclick="mossaUtente('sasso')" id="btn_sasso">sasso</button>
+                <button id="btn_carta"><i class="bi bi-newspaper"></i></button>
+                <button id="btn_forbici"><i class="bi bi-scissors"></i></button>
+                <button id="btn_sasso"><img style="width:20px; height:20px" src="~/Content/imgs/stone.jpg"/></button>
                 <p id="risultato"></p>
+                <div id="punteggio_utente">Punteggio Utente: 0</div>
+                <div id="punteggio_pc">Punteggio PC: 0</div>
+
             </div>
         </div>
     </div>
 
 </div>
 
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script>
-        //al caricamento della pagina
-        $(document).ready(function () {
-
-            const mossaComputer = () => {
-                const mossaPC = ['carta', 'forbici', 'sasso'];
-                const random = Math.floor(Math.random() * mossaPC.length); 
-                return mossaPC[random];
-            }
-
-            const mossaUtente = (mossa) => {
-                computerMOVE = mossaComputer();
-                const mossaUtente = mossa;
-                if (computerMOVE === mossaUtente) {
-                    $("#risultato").text('Pareggio');
-                } else if (computerMOVE === 'carta' && mossaUtente === 'forbici') {
-                    $("#risultato").text('Hai vinto');
-                } else if (computerMOVE === 'carta' && mossaUtente === 'sasso') {
-                    $("#risultato").text('Hai Perso');
-                } else if (computerMOVE === 'forbici' && mossaUtente === 'carta') {
-                    $("#risultato").text('Hai Perso');
-                } else if (computerMOVE === 'forbici' && mossaUtente === 'sasso') {
-                    $("#risultato").text('Hai vinto');
-                } else if (computerMOVE === 'sasso' && mossaUtente === 'carta') {
-                    $("#risultato").text('Hai vinto');
-                } else if (computerMOVE === 'sasso' && mossaUtente === 'forbici') {
-                    $("#risultato").text('Hai Perso');
-                }
-            }
-
-        });
-    </script>
-
-
-
-}

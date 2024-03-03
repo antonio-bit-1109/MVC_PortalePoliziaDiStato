@@ -39,7 +39,7 @@
                 <div class="text-center">
                     <h5 class="text-info"> fai il logout per visualizzare di nuovo la pagina di Login.</h5>
                 </div>
-               
+
             }
             else
             {
@@ -69,16 +69,16 @@
         </div>
     </div>
 
-    <!--<div class="container">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-8">-->
-                @* MINIGIOCO QUI *@
-                <!--<div class="mt-5">
+            <div class="col-8">
+                @*MINIGIOCO QUI*@
+                <div class="mt-5">
                     @Html.Partial("_noiaFight")
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 </main>
 
 
@@ -88,14 +88,104 @@
 
 
     <script>
-    function hideAlertAfterThreeSeconds() {
-        setTimeout(function () {
-            $('.alert').fadeOut('slow');
-        }, 3000);
-    }
-    $(document).ready(function () {
-        hideAlertAfterThreeSeconds();
-    });
+        function hideAlertAfterThreeSeconds() {
+            setTimeout(function () {
+                $('.alert').fadeOut('slow');
+            }, 3000);
+        }
+
+
+
+        $(document).ready(function () {
+            hideAlertAfterThreeSeconds();
+
+            $("#btn_carta").click(() => mossaUtente('carta'));
+            $("#btn_forbici").click(() => mossaUtente('forbici'));
+            $("#btn_sasso").click(() => mossaUtente('sasso'));
+            let ptUtente = 0;
+            let ptPc = 0;
+
+            const mossaComputer = () => {
+                let mossaComputer = Math.floor(Math.random() * 3);
+
+                switch (mossaComputer) {
+                    case 0:
+                        return 'carta';
+                    case 1:
+                        return 'forbici';
+                    case 2:
+                        return 'sasso';
+
+                }
+            }
+
+            const mossaUtente = (mossa) => {
+                let computerMOVE = mossaComputer();
+                let mossaUtente = mossa;
+
+                if (computerMOVE === mossaUtente) {
+
+                    PunteggioTotale('Pareggio');
+                    return $("#risultato").html(`Hai Scelto: ${mossaUtente}. Il Computer ha scelto: ${computerMOVE}: <span class='text-info fs-5'> Pareggio </span>`); 
+
+                } else if (computerMOVE === 'carta' && mossaUtente === 'forbici') {
+
+                    PunteggioTotale('Hai Vinto');
+                    return $("#risultato").html(`Hai Scelto: ${mossaUtente}. Il Computer ha scelto: ${computerMOVE}: <span class='text-success fs-5'> Hai Vinto </span>`); 
+
+                } else if (computerMOVE === 'carta' && mossaUtente === 'sasso') {
+
+                    PunteggioTotale('Hai Perso');
+                    return $("#risultato").html(`Hai Scelto: ${mossaUtente}. Il Computer ha scelto: ${computerMOVE}:  <span class='text-danger fs-5'> Hai Perso </span>`); 
+
+                } else if (computerMOVE === 'forbici' && mossaUtente === 'carta') {
+
+                    PunteggioTotale('Hai Perso');
+                    return $("#risultato").html(`Hai Scelto: ${mossaUtente}. Il Computer ha scelto: ${computerMOVE}: <span class='text-danger fs-5'> Hai Perso </span>`);
+
+                } else if (computerMOVE === 'forbici' && mossaUtente === 'sasso') {
+
+                    PunteggioTotale('Hai Vinto');
+                    return $("#risultato").html(`Hai Scelto: ${mossaUtente}. Il Computer ha scelto: ${computerMOVE}: <span class='text-success fs-5'> Hai Vinto </span>`); 
+
+                } else if (computerMOVE === 'sasso' && mossaUtente === 'carta') {
+
+                    PunteggioTotale('Hai Vinto');
+                    return $("#risultato").html(`Hai Scelto: ${mossaUtente}. Il Computer ha scelto: ${computerMOVE}: <span class='text-success fs-5'> Hai Vinto </span>`); 
+
+                } else if (computerMOVE === 'sasso' && mossaUtente === 'forbici') {
+
+                    PunteggioTotale('Hai Perso');
+                    return $("#risultato").html(`Hai Scelto: ${mossaUtente}. Il Computer ha scelto: ${computerMOVE}: <span class='text-danger fs-5'> Hai Perso </span>`); 
+                }
+               
+            }
+
+            const PunteggioTotale = (string) => {
+               
+
+                if (string === 'Hai Vinto') {
+                     ptUtente++;
+                } else if (string === 'Hai Perso') {
+                     ptPc++;
+                } else if (string === 'Pareggio') {
+                    return;
+                
+                }
+
+                $('#punteggio_utente').text(`Punteggio Utente: ${ptUtente}`)
+                $('#punteggio_pc').text(`Punteggio PC: ${ptPc}`)
+
+            }
+        });
     </script>
 
 }
+
+
+
+
+
+
+
+ 

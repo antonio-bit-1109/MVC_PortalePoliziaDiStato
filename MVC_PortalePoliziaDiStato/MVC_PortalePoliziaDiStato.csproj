@@ -160,6 +160,7 @@
     <Content Include="Content\imgs\gif.gif" />
     <Content Include="Content\imgs\grinch_meme.gif" />
     <Content Include="Content\imgs\rick_roll.gif" />
+    <Content Include="Content\imgs\stone.jpg" />
     <Content Include="Content\SuperHeroTheme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
