@@ -9,7 +9,8 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 {
     public class VerbaliController : Controller
     {
-        // GET: Verbali
+
+        // l'utente può accedere a questa pagina solo se risulta essere loggato in quanto agente di polizia.
         public ActionResult Index()
         {
             if (Session["DatiAgenteLoggato"] != null)
@@ -24,6 +25,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 
         }
 
+        // get che mostra i verbali raggruppati per trasgressore, questi vengono salvati in una lista di oggetti di tipo VerbaliRaggruppatiPerTrasgressori e passati alla view.
         public ActionResult VerbaliRaggruppatiTrasgressore()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
@@ -68,6 +70,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
             return View(LIstaDeiVerbaliRaggrup_Trasgressori);
         }
 
+        // get che mostra i verbali raggruppati per violazione, questi vengono salvati in una lista di oggetti di tipo VerbaliRaggruppatiPerViolazione e passati alla view.
         public ActionResult TotalePuntiDecurtati_PerTrasgressore()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
@@ -111,6 +114,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
             return View(ListaTotalePuntiDecurtati_Trasgressore);
         }
 
+        // get che mostra i verbali con importo maggiore di 400 euro, questi vengono salvati in una lista di oggetti di tipo verbaliImportoMagg400 e passati alla view.
         public ActionResult VerbaliImportoMaggiore400()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
@@ -153,6 +157,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
             return View(ListaVerbaliImportoMagg400);
         }
 
+        // get che mostra i verbali con decurtamento punti maggiore di 10, questi vengono salvati in una lista di oggetti di tipo ViolazioniMagg10Pt e passati alla view.
         public ActionResult verbaliViolazioni10Pt()
         {
 

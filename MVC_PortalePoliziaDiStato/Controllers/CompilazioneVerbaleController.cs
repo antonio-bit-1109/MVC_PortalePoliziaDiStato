@@ -22,6 +22,14 @@ namespace MVC_PortalePoliziaDiStato.Controllers
         //}
 
         // GET: CompilazioneVerbale/Create
+
+
+        // questa action viene richiamata quando si clicca sul bottone "Compila Verbale" nella navbar.
+        // La navbar è resa visibile solo se l'utente è loggato. e quin di esiste una Session "DatiAgenteLoggato"
+        // in questo metodo sono stati utilizzati due dizionari per metere in relazione tra di loro l'IDviolazione e la sua descrizione,
+        // il dizionario viene poi inserito in una viewbag e richiamato nella view Create. il dizionario è infine utilizzato per popolare una dropdownlist
+        // discorso spessochè uguale per quanto riguarda il dizionario utilizzato per popolare la dropdownlist con le anagrafiche.
+        // unica differenza è che in questo caso è stato utilizzato un model per salvare nome cognome dell utente selezionato e da questi due valori creare una proprietà nome completo che viene utilizzato nel dizionario come value da visualizzare nel render della view Create.
         public ActionResult Create()
         {
 
@@ -100,7 +108,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
         }
 
 
-        // POST: CompilazioneVerbale/Create
+        // tramite questo metodo vengono inseriti i dati del verbale nel database.
         [HttpPost]
         public ActionResult Create(Verbale verbale)
         {

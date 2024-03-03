@@ -22,6 +22,8 @@ namespace MVC_PortalePoliziaDiStato.Controllers
         //}
 
         // GET: Trasgressore/Create
+
+        // questo metodo , se esiste una sessione dell'agente loggat, mostra la view per inserire un nuovo trasgressore.
         public ActionResult Create()
         {
             if (Session["DatiAgenteLoggato"] != null)
@@ -35,7 +37,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 
         }
 
-        // POST: Trasgressore/Create
+        // quando nella view viene cliccato il bottone per inviare il form , se il modello inserito nel form risulta coerente con il modello anagrafica, quest' ultimo viene inserito nel databaase
         [HttpPost]
         public ActionResult Create(Anagrafica anagrafica)
         {
@@ -85,7 +87,7 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 
         }
 
-        // get per avere elenco trasgressori
+        // get che ricava l'elenco dei trasgressori dal DB , li inserisce in una lista e li mostra nella view.
         public ActionResult ElencoTrasgressioni()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
@@ -115,12 +117,6 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 
 
                 }
-
-
-                //cmd.ExecuteNonQuery();
-
-                //TempData["Messaggio"] = "Trasgressore inserito correttamente";
-                //return RedirectToAction("Index", "Verbali");
             }
             catch (Exception ex)
             {
@@ -135,48 +131,6 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 
             return View(ElencoViolazioni);
         }
-        // GET: Trasgressore/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
 
-        //// POST: Trasgressore/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: Trasgressore/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: Trasgressore/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }

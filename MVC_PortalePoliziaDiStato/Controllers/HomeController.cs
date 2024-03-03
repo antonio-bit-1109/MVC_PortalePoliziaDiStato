@@ -8,16 +8,23 @@ namespace MVC_PortalePoliziaDiStato.Controllers
 {
     public class HomeController : Controller
     {
+
+        // restituisce la view dell'index come pagina principale del sito
         public ActionResult Index()
         {
             return View();
         }
 
+        // restituisce la view del login come pagina parziale
+        // la login partial è inserita all'interno di home/index 
         public ActionResult Login()
         {
             return PartialView("_LoginPartial");
         }
 
+        // questo metodo viene richiamato quando si clicca sul bottone login nella pagina parziale ed effettua un controllo su nome e password inseriti dall'utente, 
+        // se corrispondenti ai valori salvati nella tabella AgentiPolizia del database allora l'utente viene reindirizzato a verbali/index e ceata una sessione con i dati dell'agente loggato
+        // sfruttando il ModelAgenteLoggato.
         [HttpPost]
         public ActionResult CheckLogin(LoginModel modello)
         {
@@ -78,6 +85,8 @@ namespace MVC_PortalePoliziaDiStato.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // questa action viene richiamata quando si clicca sul bottone logout nella pagina parziale
+        // essa è responsabile della cancellazione dei dati dalla session e del reindirizzamento ad Home/index
         public ActionResult LogoutAction()
         {
             Session["DatiAgenteLoggato"] = null;
